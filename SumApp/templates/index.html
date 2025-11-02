@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sum Calculator</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e7f1ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .box {
+      background: #fff;
+      padding: 25px;
+      width: 300px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      background: #007bff;
+      color: white;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #005fcc;
+    }
+    .result {
+      margin-top: 10px;
+      color: green;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .error {
+      margin-top: 10px;
+      color: red;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <h2>Sum Calculator</h2>
+
+    <form method="POST" action="/calculate">
+      <input type="text" name="num1" placeholder="Enter number 1" value="{{ num1 or '' }}" required>
+      <input type="text" name="num2" placeholder="Enter number 2" value="{{ num2 or '' }}" required>
+      <button type="submit">Calculate</button>
+    </form>
+
+    {% if result is defined %}
+    <div class="result">Result: {{ result }}</div>
+    {% endif %}
+
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+  </div>
+</body>
+</html>
